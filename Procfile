@@ -1,1 +1,1 @@
-web: yarn start
+web: yarn prestart && yarn start
