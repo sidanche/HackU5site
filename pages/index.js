@@ -21,7 +21,7 @@ submit(e){
       <div>
       	<form onSubmit={this.submit}>
  		 First name:
-  		<input type="text" name="firstname" value="Enter Review Here"/>
+  		<input type="text" name="firstname" placeholder="Enter Review Here"/>
   		<input type="submit" value="Submit"/>
 		</form>
       </div>
