@@ -20,8 +20,9 @@ submit(e){
     return (
       <div>
       	<form onSubmit={this.submit}>
- 		 First name:
-  		<input type="text" name="firstname" placeholder="Enter Review Here"/>
+ 		 Review Entry:
+ 		<textarea name="Text1" cols="40" rows="5"></textarea>
+  		<input type="text" name="reviewentry" placeholder="Enter Review Here"/>
   		<input type="submit" value="Submit"/>
 		</form>
       </div>
