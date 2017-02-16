@@ -2,18 +2,19 @@
   "name": "yelp",
   "version": "1.0.0",
   "description": "HackU5 project",
-  "main": "index.js",
+  "main": "pages/index.js",
   "repository": "https://github.com/sidanche/HackU5site.git",
   "author": "Sid",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "next": "^2.0.0-beta",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
   "scripts": {
-   "dev": "PORT=3000 node server.js",
-   "prestart": "next build",
-   "start": "NODE_ENV=production node server.js",
+    "dev": "PORT=3000 node server.js",
+    "prestart": "next build",
+    "start": "NODE_ENV=production node server.js"
   }
 }
