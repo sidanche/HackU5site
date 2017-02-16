@@ -12,8 +12,8 @@
     "react-dom": "^15.4.2"
   },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start -p ${PORT}"
+   "dev": "PORT=3000 node server.js",
+   "prestart": "next build",
+   "start": "NODE_ENV=production node server.js",
   }
 }
