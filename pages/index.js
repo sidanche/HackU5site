@@ -22,8 +22,18 @@ constructor(props) {
 
  modelChanger = (e) =>{
   e.preventDefault()
-  console.log("onChange", e.target.value)
   this.setState({model:e.target.value})
+  this.submiterHelper(this.state.value)
+ }
+ submiterHelper = (value) => {
+  if (this.isLongEnough(value)){ 
+    if (value[value.length - 1] === "." || value[value.length - 1] === " " || value[value.length - 1] === "!"  || value[value.length - 1] === "?")  
+    {
+      this.querySender(value, this.state.model)
+    }
+    
+  }
+  else {this.setState({response: 'none'})}  
  }
 isLongEnough = value =>{
 	var spaceCount = value.split(" ").length - 1
@@ -33,7 +43,6 @@ sanitize = value => value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 
 async querySender(value, model){
 	const sanitize = this.sanitize(value)
-	console.log(sanitize)
   if (model == "0") {
     const myLoad = JSON.stringify({input: {csvInstance: [sanitize]}})
     const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/100kmodel/predict?'
@@ -98,7 +107,6 @@ async querySender(value, model){
 }
 submit=(e)=>{
 	e.preventDefault()
-	console.log("submitted")
 	this.setState({value: e.target.value})
 	if (this.isLongEnough(e.target.value)){ 
 		if (e.target.value[e.target.value.length - 1] === "." || e.target.value[e.target.value.length - 1] === " " || e.target.value[e.target.value.length - 1] === "!"  || e.target.value[e.target.value.length - 1] === "?")  
@@ -107,7 +115,7 @@ submit=(e)=>{
 		}
 		
 	}
-	else {this.setState({response: 'none'}); console.log("inside else");}
+	else {this.setState({response: 'none'})}
 
 }
 
