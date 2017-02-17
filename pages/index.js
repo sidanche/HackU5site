@@ -18,8 +18,8 @@ constructor(props) {
    };
 
  }
-sanitize2 = value =>{
-	var spaceCount = value.split(" ").length - 1)
+isLongEnough = value =>{
+	var spaceCount = value.split(" ").length - 1
 	return spaceCount >= 3
 }
 sanitize = value => value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
@@ -40,12 +40,16 @@ async querySender(value){
 }
 submit=(e)=>{
 	e.preventDefault()
+	console.log("submitted")
 	this.setState({value: e.target.value})
-	if (e.target.value[e.target.value.length - 1] === "." || e.target.value[e.target.value.length - 1] === " ") {
-		if (sanitize2(e.target.value)) {
+	if (this.isLongEnough(e.target.value)){ 
+		if (e.target.value[e.target.value.length - 1] === "." || e.target.value[e.target.value.length - 1] === " " || e.target.value[e.target.value.length - 1] === "!"  || e.target.value[e.target.value.length - 1] === "?")  
+		{
 			this.querySender(e.target.value)
 		}
+		
 	}
+	else {this.setState({response: 'none'}); console.log("inside else");}
 
 }
 
