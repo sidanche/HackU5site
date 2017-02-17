@@ -14,15 +14,19 @@ constructor(props) {
 
  }
 
+sanitize = value => value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+
 async querySender(value){
-    const myLoad = JSON.stringify({input: {csvInstance: [value]}})
+	const sanitize = this.sanitize(value)
+	console.log(sanitize)
+    const myLoad = JSON.stringify({input: {csvInstance: [sanitize]}})
     const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/prediction-model/predict?'
     const res = await fetch(url, {method: 'POST', 
     	headers: {'Authorization': 'Bearer ya29.Glv1A4u-g1yAk6hRLPr5lgw5D4IRM8fsPe3vleMdlcYTYx-FFIUBuDWeovoVqISCrm6vwwxTx801169dNotYsVkE4SP796rWsZqvRFmCv46fJ1Rou2L0G_gERzK9',
     	'Content-Type': 'application/json'} ,
     	body: myLoad})
     const json = await res.json()
-    console.log(json.outputLabel, value)
+    //console.log(json.outputLabel, value)
     this.setState({response: json.outputLabel})
 
 
@@ -30,7 +34,9 @@ async querySender(value){
 submit=(e)=>{
 	e.preventDefault()
 	this.setState({value: e.target.value})
-	this.querySender(e.target.value)
+	if (e.target.value[e.target.value.length - 1] === "." || e.target.value[e.target.value.length - 1] === " ") {
+		this.querySender(e.target.value)
+	}
 
 }
 
@@ -82,11 +88,21 @@ submit=(e)=>{
     	-webkit-box-sizing: border-box;
     	-moz-box-sizing: border-box;
     	box-sizing: border-box;
-    }
-    textarea:focus{
-    	border: none;
-    	outline: none;
-    }
+		border-radius: 3px;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+		-moz-transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+		-webkit-transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+		-o-transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+		transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+	}
+	textarea:focus, textarea:hover {
+		outline: none;
+		box-shadow: 0 3px 9px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+		-moz-transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+		-webkit-transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+		-o-transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+		transition: box-shadow 250ms cubic-bezier(.4,0,.2,1);
+	}
 
 
     `}</style>
