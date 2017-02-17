@@ -96,7 +96,7 @@ async querySender(value, model){
   }
     else if (model == "5"){
     const myLoad = JSON.stringify({input: {csvInstance: [sanitize]}})
-    const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/100kmodel/predict?'
+    const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/fullmodel/predict?'
     const res = await fetch(url, {method: 'POST', 
     headers: {'Authorization': `Bearer ${this.props.accessToken}`,
     'Content-Type': 'application/json'} ,
