@@ -23,7 +23,7 @@ export default class extends React.Component {
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             width: 80px;
             height: 80px;
-            background-color: #ECE5F0;
+            background-color: #BDBDBD;
             -moz-transition: background-color 400ms cubic-bezier(.4,0,.2,1);
             -webkit-transition: background-color 400ms cubic-bezier(.4,0,.2,1);
             -o-transition: background-color 400ms cubic-bezier(.4,0,.2,1);

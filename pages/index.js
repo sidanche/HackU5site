@@ -121,26 +121,40 @@ submit=(e)=>{
       </Head>
 
       <style>{`
+
+        html{
+          background: url(https://www.toptal.com/designers/subtlepatterns/patterns/subtle_white_feathers.png);
+        }
     html, body {
-    	background: #F1FFE7;
+    
     	margin: 0;
     	padding: 0;
+      font-family: Nunito, sans-serif;
+      text-rendering: optimizeLegibility;
 	}
 	
-	main, header{
+	main{
 		max-width: 1040px;
 		width: auto;
-		padding: 0 1rem;
+		padding: 2rem 1rem 0;
 		margin: 0 auto;
 	}
-
+  header{
+    margin-top: 0;
+    background: url(/static/lodyas.png);
+  }
 	h1{
 		font-family: Nunito, sans-serif;
-		font-size: 64px;
+		font-size: 86px;
 		font-weight: 200;
 		text-align: center;
-    margin-bottom: 1rem;
+    margin: 0 auto;
+    padding: 4rem 0;
+    color:#fafafa;
 	}
+  h3{
+    text-align:center;
+  }
     textarea{
     	display: block;
       font-family: Nunito, sans-serif;
@@ -183,7 +197,7 @@ submit=(e)=>{
   footer {
     max-width: 800px;
     margin: auto auto;
-    padding: 1rem;
+    padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
   }
@@ -194,6 +208,7 @@ submit=(e)=>{
     	</header>
       <main>
         <Stars stars={stars} />
+        <h3>Predictive Rating</h3>
        	<textarea name="Text1" onChange={this.submit} value={this.state.value} placeholder="Enter Review Here"></textarea>
       </main>
       <footer>
