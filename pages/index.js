@@ -5,11 +5,16 @@ import Stars from '../components/stars'
 import 'isomorphic-fetch'
 
 export default class extends React.Component {
+	static async getInitialProps () {
+		const accessToken = process.env.ACCESS_TOKEN
+		console.log(accessToken)
+		return {accessToken}
+	}
 constructor(props) {
    super(props);
    this.state = {
      value: '',
-     response: 'one' 
+     response: 'none' 
    };
 
  }
@@ -22,7 +27,7 @@ async querySender(value){
     const myLoad = JSON.stringify({input: {csvInstance: [sanitize]}})
     const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/prediction-model/predict?'
     const res = await fetch(url, {method: 'POST', 
-    	headers: {'Authorization': 'Bearer ya29.Glv1A4u-g1yAk6hRLPr5lgw5D4IRM8fsPe3vleMdlcYTYx-FFIUBuDWeovoVqISCrm6vwwxTx801169dNotYsVkE4SP796rWsZqvRFmCv46fJ1Rou2L0G_gERzK9',
+    	headers: {'Authorization': `Bearer ${this.props.accessToken}`,
     	'Content-Type': 'application/json'} ,
     	body: myLoad})
     const json = await res.json()
