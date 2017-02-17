@@ -28,7 +28,7 @@ async querySender(value){
 	const sanitize = this.sanitize(value)
 	console.log(sanitize)
     const myLoad = JSON.stringify({input: {csvInstance: [sanitize]}})
-    const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/prediction-model/predict?'
+    const url = 'https://www.googleapis.com/prediction/v1.6/projects/yelppredictor/trainedmodels/100kmodel/predict?'
     const res = await fetch(url, {method: 'POST', 
     	headers: {'Authorization': `Bearer ${this.props.accessToken}`,
     	'Content-Type': 'application/json'} ,
