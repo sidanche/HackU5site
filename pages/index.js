@@ -18,7 +18,10 @@ constructor(props) {
    };
 
  }
-
+sanitize2 = value =>{
+	var spaceCount = value.split(" ").length - 1)
+	return spaceCount >= 3
+}
 sanitize = value => value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 
 async querySender(value){
@@ -31,7 +34,6 @@ async querySender(value){
     	'Content-Type': 'application/json'} ,
     	body: myLoad})
     const json = await res.json()
-    //console.log(json.outputLabel, value)
     this.setState({response: json.outputLabel})
 
 
@@ -40,7 +42,9 @@ submit=(e)=>{
 	e.preventDefault()
 	this.setState({value: e.target.value})
 	if (e.target.value[e.target.value.length - 1] === "." || e.target.value[e.target.value.length - 1] === " ") {
-		this.querySender(e.target.value)
+		if (sanitize2(e.target.value)) {
+			this.querySender(e.target.value)
+		}
 	}
 
 }
